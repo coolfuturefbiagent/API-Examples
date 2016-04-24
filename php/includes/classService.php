@@ -61,12 +61,15 @@ class MBClassService extends MBAPIService
 	 * @param SourceCredentials $credentials A source credentials object to use with this call
 	 * @return object The raw result of the SOAP call
 	 */
-	public function GetClasses(array $classDescriptionIDs, array $classIDs, array $staffIDs, $startDate, $endDate, $clientID = null, $PageSize = null, $CurrentPage = null, $XMLDetail = XMLDetail::Full, $Fields = NULL, SourceCredentials $credentials = null)
+	public function GetClasses(array $classDescriptionIDs, array $classIDs, array $staffIDs, $startDate, $endDate, $clientID = null, $PageSize = null, $CurrentPage = null, $XMLDetail = XMLDetail::Full, $Fields = NULL, SourceCredentials $credentials = null,array $session_types_ids=)
 	{		
 		$additions = array();
 		if (isset($classDescriptionIDs))
 		{
 			$additions['ClassDescriptionIDs'] = $classDescriptionIDs;
+		}
+		if(isset($session_types_ids)){
+			$additions['SessionTypeIDs'] =$session_types_ids;
 		}
 		if (isset($classIDs))
 		{
